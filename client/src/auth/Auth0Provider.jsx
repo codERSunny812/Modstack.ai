@@ -8,6 +8,7 @@ const AuthProvider = ({ children }) => {
             domain={domain}
             clientId={clientId}
             authorizationParams={{ redirect_uri: window.location.origin }}
+            cacheLocation="localstorage" 
         >
             {children}
         </Auth0Provider>

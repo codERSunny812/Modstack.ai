@@ -4,11 +4,15 @@ import DashBoard from "./DashBoard/DashBoard";
 
 
 function App() {
-  const { loginWithPopup, getAccessTokenSilently,logout, user, isAuthenticated } = useAuth0();
+  const { loginWithPopup, getAccessTokenSilently,logout, user, isAuthenticated,isLoading } = useAuth0();
+
+
+  if (isLoading) {
+    return <div className="w-full h-screen flex justify-center items-center">Loading...</div>;
+  }
 
 
 
-  console.log("auth:",user)
   const handleLogin = async () => {
     try {
       await loginWithPopup();  // Open Auth0 login popup
