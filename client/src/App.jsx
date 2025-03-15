@@ -1,7 +1,7 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import DashBoard from "./DashBoard/DashBoard";
-import "./app.css";
+
 
 function App() {
   const { loginWithPopup, getAccessTokenSilently,logout, user, isAuthenticated } = useAuth0();
