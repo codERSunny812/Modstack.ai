@@ -12,9 +12,12 @@ connectDb();
 
 
 const PORT = process.env.PORT || 4001;
+const uri = process.env.FRONTEND_URI;
 //middle ware
 app.use(express.json())
-app.use(cors({}))
+app.use(cors({
+    origin:uri
+}))
 
 
 
