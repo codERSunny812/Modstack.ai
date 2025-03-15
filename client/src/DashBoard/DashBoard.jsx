@@ -12,7 +12,7 @@ const DashBoard = () => {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const resp = await fetch(`${backendUri}/create/get-notes`);
+        const resp = await fetch(`${backendUri}/get-notes`);
         const data = await resp.json();
         setTasks(data.data);
         localStorage.setItem("tasks", JSON.stringify(data.data));
@@ -33,7 +33,7 @@ const DashBoard = () => {
     const newTask = { notes: textInput, completed: false };
 
     try {
-      const response = await fetch(`${backendUri}/create/create-notes`, {
+      const response = await fetch(`${backendUri}/create-notes`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newTask),
@@ -59,7 +59,7 @@ const DashBoard = () => {
     setTasks(updatedTasks);
 
     try {
-      await fetch(`${backendUri}/create/update-notes/${id}`, {
+      await fetch(`${backendUri}/update-notes/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ completed: !tasks.find(task => task._id === id).completed }),
@@ -94,7 +94,7 @@ const DashBoard = () => {
     setTasks(updatedTasks);
 
     try {
-      await fetch(`${backendUri}/create/update-notes/${id}`, {
+      await fetch(`${backendUri}/update-notes/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ notes: editText }),
